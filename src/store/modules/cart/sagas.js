@@ -1,6 +1,8 @@
 import { call, select, put, all, takeLatest } from 'redux-saga/effects';
 
 import api from '../../../services/api';
+import history from '../../../services/history';
+
 import { formatPrice } from '../../../util/format';
 
 import { toast } from 'react-toastify';
@@ -34,6 +36,8 @@ function* addToCart({ id }) {
     };
 
     yield put(addToCartSuccess(cartData));
+
+    history.push('/cart');
   }
 }
 
